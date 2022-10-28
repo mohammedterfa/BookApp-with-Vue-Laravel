@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
     public function index(){
-        return "index page";
+        return "list of index page";
+    }
+
+    public function create(){
+        return view('book.create');
     }
 }
