@@ -28,4 +28,9 @@ class BookController extends Controller
 
         return back()->with('message','New Book Added');
     }
+
+    public function edit($id){
+        $book = Book::find($id);
+        return view('book.edit',compact('book'));
+    }
 }

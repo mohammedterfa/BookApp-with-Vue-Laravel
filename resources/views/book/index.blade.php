@@ -24,6 +24,8 @@
             <th scope="col">Name</th>
             <th scope="col">Description</th>
             <th scope="col">Category</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -32,6 +34,12 @@
                     <td>{{ $book->name }}</td>
                     <td>{{ $book->description }}</td>
                     <td>{{ $book->category }}</td>
+                    <td>
+                        <a href="{{ route('book.edit',$book->id) }}">
+                            <button class="btn btn-info">Edit</button>
+                        </a>
+                    </td>
+                    <td></td>
                 </tr>
             @empty
             <td> No any Books</td>
