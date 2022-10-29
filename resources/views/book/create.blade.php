@@ -16,13 +16,19 @@
     <div class="card mt-5">
         <div class="card-header">Create A New Book</div>
     <div class="card-body">
-    <form action="" method="POST">@csrf
+    <form action="{{ route('book.store') }}" method="POST">@csrf
 
         <label>Name of book</label>
         <input type="text" name="name" class="form-control" placeholder="name of book">
+        @if ($errors->has('name'))
+            <span class="text-danger">{{ $errors->first('name') }}</span>
+        @endif
         <br>
         <label>Description of book</label>
         <textarea name="description" class="form-control"></textarea>
+        @if ($errors->has('description'))
+            <span class="text-danger">{{ $errors->first('description') }}</span>
+        @endif
         <br>
         <label>Category</label>
         <select name="category" class="form-control">
@@ -31,6 +37,9 @@
             <option value="biography">biography book</option>
             <option value="comdey">comdey book</option>
         </select>
+        @if ($errors->has('category'))
+            <span class="text-danger">{{ $errors->first('category') }}</span>
+        @endif
         <br>
 
         <input type="submit" value="submit" class="btn btn-primary">
