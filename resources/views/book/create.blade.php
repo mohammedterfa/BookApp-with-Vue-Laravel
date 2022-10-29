@@ -13,6 +13,11 @@
 <div class="container">
 <div class="row justify-content-center">
     <div class="col-md-8">
+        @if (Session::has('message'))
+            <div class="alert alert-success">
+                {{ Session::get('message') }}
+            </div>
+        @endif
     <div class="card mt-5">
         <div class="card-header">Create A New Book</div>
     <div class="card-body">
@@ -36,6 +41,7 @@
             <option value="frictional">frictional book</option>
             <option value="biography">biography book</option>
             <option value="comdey">comdey book</option>
+            <option value="educational">educational book</option>
         </select>
         @if ($errors->has('category'))
             <span class="text-danger">{{ $errors->first('category') }}</span>

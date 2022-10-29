@@ -26,6 +26,6 @@ class BookController extends Controller
             'category'=>$request->category
         ]);
 
-        return back();
+        return back()->with('message','New Book Added');
     }
 }
