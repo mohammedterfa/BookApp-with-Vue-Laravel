@@ -21,7 +21,7 @@
     <div class="card mt-5">
         <div class="card-header">Update A Book</div>
     <div class="card-body">
-    <form action="{{ route('book.store') }}" method="POST">@csrf
+    <form action="{{ route('book.update',$book->id) }}" method="POST">@csrf
 
         <label>Name of book</label>
         <input type="text" name="name" class="form-control" value="{{ $book->name }}">

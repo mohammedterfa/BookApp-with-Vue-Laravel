@@ -33,4 +33,15 @@ class BookController extends Controller
         $book = Book::find($id);
         return view('book.edit',compact('book'));
     }
+
+    public function update(Request $request,$id){
+        $book = Book::find($id);
+        $book->name = $request->name;
+        $book->description = $request->description;
+        $book->category = $request->category;
+        $book->save();
+
+        return redirect()->route('book.index')->with('message','Book Updated');
+
+    }
 }
