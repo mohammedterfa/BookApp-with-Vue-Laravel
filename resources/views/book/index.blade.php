@@ -44,7 +44,11 @@
                             <button class="btn btn-info">Edit</button>
                         </a>
                     </td>
-                    <td></td>
+                    <td>
+                        <form action="{{ route('book.destroy',$book->id) }}" method="POST">@csrf
+                            <button type="submit" class="btn btn-danger">delete</button>
+                        </form>
+                    </td>
                 </tr>
             @empty
             <td> No any Books</td>
