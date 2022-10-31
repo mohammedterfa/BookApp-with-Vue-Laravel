@@ -28,7 +28,7 @@
                 <tr>
                     <td>
                         @if ($book->image)
-                            <img src="{{ Storage::url($book->image) }}" width="100">
+                            <img src="{{ Storage::url($book->image) }}" width="80">
                         @else
                             <img src="/img/img.jpg"  width="80" alt="">
                         @endif
@@ -38,12 +38,12 @@
                     <td>{{ $book->category }}</td>
                     <td>
                         <a href="{{ route('book.edit',$book->id) }}">
-                            <button class="btn btn-info">Edit</button>
+                            <button class="btn btn-info"><i class="fas fa-edit"></i></button>
                         </a>
                     </td>
                     <td>
                         <form action="{{ route('book.destroy',$book->id) }}" method="POST">@csrf
-                            <button type="submit" class="btn btn-danger">delete</button>
+                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>

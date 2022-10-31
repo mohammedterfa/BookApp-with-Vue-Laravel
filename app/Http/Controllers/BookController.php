@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use App\Http\Requests\BookStoreRequest;
+use App\Http\Requests\UpdateFormRequest;
 
 class BookController extends Controller
 {
@@ -35,12 +36,22 @@ class BookController extends Controller
         return view('book.edit',compact('book'));
     }
 
-    public function update(Request $request,$id){
+    public function update(UpdateFormRequest $request,$id){
         $book = Book::find($id);
-        $book->name = $request->name;
-        $book->description = $request->description;
-        $book->category = $request->category;
-        $book->save();
+        if($request->hasFile('image')){
+            $image = $request->file('image')->store('public/product');
+            $book->name = $request->name;
+            $book->description = $request->description;
+            $book->category = $request->category;
+            $book->image = $image;
+            $book->save();
+        }else{
+            $book->name = $request->name;
+            $book->description = $request->description;
+            $book->category = $request->category;
+            $book->save();
+        }
+
 
         return redirect()->route('book.index')->with('message','Book Updated');
 
