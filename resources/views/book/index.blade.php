@@ -15,6 +15,7 @@
         <thead>
           <tr>
 
+            <th scope="col">Image</th>
             <th scope="col">Name</th>
             <th scope="col">Description</th>
             <th scope="col">Category</th>
@@ -25,6 +26,13 @@
         <tbody>
             @forelse ($books as $book)
                 <tr>
+                    <td>
+                        @if ($book->image)
+                            <img src="{{ Storage::url($book->image) }}" width="100">
+                        @else
+                            <img src="/img/img.jpg"  width="80" alt="">
+                        @endif
+                    </td>
                     <td>{{ $book->name }}</td>
                     <td>{{ $book->description }}</td>
                     <td>{{ $book->category }}</td>
