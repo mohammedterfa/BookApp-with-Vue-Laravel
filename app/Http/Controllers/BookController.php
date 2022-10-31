@@ -19,11 +19,12 @@ class BookController extends Controller
 
     public function store(BookStoreRequest $request){
 
-
+        $image = $request->file('image')->store('public/product');
         Book::create([
             'name'=>$request->name,
             'description'=>$request->description,
-            'category'=>$request->category
+            'category'=>$request->category,
+            'image'=>$image
         ]);
 
         return back()->with('message','New Book Added');
